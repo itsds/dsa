@@ -3,48 +3,55 @@ class Solution {
 
         int matrixLength = matrix.length;
 
-        int low = 0;
-        int high = matrixLength - 1;
+        int low=0;
+        int high=matrixLength-1;
+        int mid=(low+high)/2;
 
-        while (low <= high) {
+        while(low <= high){
+            if(matrix[mid][0]==target)
+                return true;
 
-            int mid = (low + high) / 2;
-
-            if (target < matrix[mid][0]) {
-                high = mid - 1;
-            }
-            else if (target > matrix[mid][matrix[mid].length - 1]) {
-                low = mid + 1;
+            else if(matrix[mid][0] > target){
+                high=mid-1;
             }
             else {
-                return secondLevel(matrix[mid], target);
+                boolean secondLevelSearch = secondLevel(matrix[mid], target);
+                if(secondLevelSearch)
+                    return true;
+
+                else {
+                    low=mid+1;
+                }
             }
+            mid=(low+high)/2;
+            
         }
 
         return false;
+        
     }
 
     public boolean secondLevel(int[] nums, int target) {
 
+        int index=-1;
         int len = nums.length;
-        int low = 0;
-        int high = len - 1;
+        int low=0;
+        int high=len-1;
+        int mid=(low+high)/2;
 
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            if (nums[mid] == target) {
+        while(low<=high){
+            if(nums[mid]==target)
                 return true;
-            }
-            else if (target < nums[mid]) {
-                high = mid - 1;
-            }
-            else {
-                low = mid + 1;
-            }
-        }
 
+            else if(target < nums[mid]){
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+            mid=(low+high)/2;
+        }
         return false;
+        
     }
 }
