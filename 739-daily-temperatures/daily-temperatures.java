@@ -16,6 +16,7 @@ class Solution {
                     st.pop();
                 } 
             }
+            
             if(st.isEmpty()){
                     result[i]=0;
             }
