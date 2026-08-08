@@ -19,9 +19,6 @@ class Solution {
             }
             mid=(low+high)/2;
         }
-        //if(nums[low]==target)
-          //  return low;
-
         return -1;
         
     }
